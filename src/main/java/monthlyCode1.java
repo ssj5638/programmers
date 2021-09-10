@@ -15,23 +15,23 @@ public class monthlyCode1 {
     // 3진법 뒤집기
     int numeral(int n) {
         boolean endPoint = n > 0;
-        int remainder = n % 3;
+        int remainder;
         List<Integer> temp = new ArrayList<>();
-
+        StringBuilder sb = new StringBuilder();
         int answer = 0;
 
         while (endPoint) {
             remainder = n % 3;
-            n = n / 3;
+            n /= 3;
 
+            sb.append(remainder);
             temp.add(remainder);
 
             endPoint = n > 0;
         }
 
-
         for (int i = 1; i <= temp.size(); i++) {
-            answer += (int) (temp.get(temp.size() - i) * Math.pow(3, i - 1));
+            answer += Integer.parseInt(String.valueOf(sb.charAt(temp.size() - i))) * Math.pow(3, i - 1);
         }
 
         return answer;
