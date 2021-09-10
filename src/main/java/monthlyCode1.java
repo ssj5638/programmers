@@ -16,24 +16,17 @@ public class monthlyCode1 {
     int numeral(int n) {
         boolean endPoint = n > 0;
         int remainder;
-        List<Integer> temp = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        int answer = 0;
 
         while (endPoint) {
             remainder = n % 3;
             n /= 3;
 
             sb.append(remainder);
-            temp.add(remainder);
 
             endPoint = n > 0;
         }
 
-        for (int i = 1; i <= temp.size(); i++) {
-            answer += Integer.parseInt(String.valueOf(sb.charAt(temp.size() - i))) * Math.pow(3, i - 1);
-        }
-
-        return answer;
+        return Integer.parseInt(sb.toString(), 3);
     }
 }
