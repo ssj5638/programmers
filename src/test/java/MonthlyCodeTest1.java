@@ -2,8 +2,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class monthlyCodeTest1 {
-    monthlyCode1 mc1 = new monthlyCode1();
+class MonthlyCodeTest1 {
+    MonthlyCode1 mc1 = new MonthlyCode1();
 
     @Test
     void dotProductTest1() {

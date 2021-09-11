@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class monthlyCode1 {
+public class MonthlyCode1 {
     // 월간 코드 챌린지 시즌1 : 내적
     int dotProduct(int[] a, int[] b) {
         int answer = 0;
