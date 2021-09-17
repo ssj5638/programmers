@@ -39,4 +39,10 @@ class MonthlyCodeTest1 {
         int[] actual = mc1.triangularSnail(4);
         assertArrayEquals(new int[]{1,2,9,3,10,8,4,5,6,7}, actual);
     }
+
+    @Test
+    void sumTest() {
+        int[] actual = mc1.sum(new int[]{2,1,3,4,1});
+        assertArrayEquals(new int[]{2,3,4,5,6,7}, actual);
+    }
 }

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MonthlyCode1 {
     // 월간 코드 챌린지 시즌1 : 내적
     int dotProduct(int[] a, int[] b) {
@@ -53,7 +55,7 @@ public class MonthlyCode1 {
 
     int[] triangularSnail(int n) {
         int[][] matrix = new int[n][n];
-        int endPoint = (n*(n+1))/2;
+        int endPoint = (n * (n + 1)) / 2;
         int x = -1, y = 0;
         int number = 1;
 
@@ -81,6 +83,24 @@ public class MonthlyCode1 {
                 }
             }
         }
+        return answer;
+    }
+
+    int[] sum(int[] numbers) {
+        TreeSet<Integer> sumTreeSet = new TreeSet<>();
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                sumTreeSet.add(numbers[i] + numbers[j]);
+            }
+        }
+
+        int[] answer = new int[sumTreeSet.size()];
+        int i = 0;
+        for (int number : sumTreeSet) {
+            answer[i] = number;
+            i++;
+        }
+
         return answer;
     }
 
