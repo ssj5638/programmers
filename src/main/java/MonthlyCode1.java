@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class MonthlyCode1 {
     // 월간 코드 챌린지 시즌1 : 내적
     int dotProduct(int[] a, int[] b) {
@@ -54,4 +50,79 @@ public class MonthlyCode1 {
         }
         return new int[]{count, zeroCount};
     }
+
+    int[] triangularSnail(int n) {
+        int[][] matrix = new int[n][n];
+        int endPoint = n % 2 == 0 ? (n + 1) * (n / 2) : (n + 1) * (n / 2) + ((n / 2) + 1);
+        int number = 1;
+        int x = 0;
+        int y = -1;
+        boolean turnDown = true;
+        boolean turnLeft = false;
+        boolean turnUp = false;
+
+        while (endPoint >= number) {
+            if (turnDown) {
+                for (int j = y + 1; j < n; j++) {
+                    matrix[j][x] = number;
+                    number++;
+                    if (endPoint < number) {
+                        turnDown = false;
+                        break;
+                    }
+                    if (j == n - 1 || matrix[j + 1][x] != 0) {
+                        turnDown = false;
+                        turnLeft = true;
+                        y = j;
+                        break;
+                    }
+                }
+            }
+
+            if (turnLeft) {
+                for (int i = x + 1; i < n; i++) {
+                    matrix[y][i] = number;
+                    number++;
+                    if (endPoint < number) {
+                        turnLeft = false;
+                        break;
+                    }
+                    if (i == n - 1 || matrix[y][i + 1] != 0) {
+                        turnLeft = false;
+                        turnUp = true;
+                        x = i;
+                        break;
+                    }
+                }
+            }
+
+            if (turnUp) {
+                while (matrix[y - 1][x - 1] == 0) {
+                    x--;
+                    y--;
+                    matrix[y][x] = number;
+                    number++;
+                }
+                turnUp = false;
+                turnDown = true;
+                if (endPoint < number) {
+                    turnDown = false;
+                }
+            }
+        }
+
+
+        int[] answer = new int[endPoint];
+        int count = 0;
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                if (matrix[j][i] != 0) {
+                    answer[count] = matrix[j][i];
+                    count++;
+                }
+            }
+        }
+        return answer;
+    }
+
 }

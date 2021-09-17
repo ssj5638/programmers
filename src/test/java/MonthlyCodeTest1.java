@@ -33,4 +33,10 @@ class MonthlyCodeTest1 {
         int[] actual = mc1.binary("110010101001");
         assertArrayEquals(new int[]{3, 8}, actual);
     }
+
+    @Test
+    void triangularSnailTest() {
+        int[] actual = mc1.triangularSnail(4);
+        assertArrayEquals(new int[]{1,2,9,3,10,8,4,5,6,7}, actual);
+    }
 }
