@@ -53,64 +53,23 @@ public class MonthlyCode1 {
 
     int[] triangularSnail(int n) {
         int[][] matrix = new int[n][n];
-        int endPoint = n % 2 == 0 ? (n + 1) * (n / 2) : (n + 1) * (n / 2) + ((n / 2) + 1);
+        int endPoint = (n*(n+1))/2;
+        int x = -1, y = 0;
         int number = 1;
-        int x = 0;
-        int y = -1;
-        boolean turnDown = true;
-        boolean turnLeft = false;
-        boolean turnUp = false;
 
-        while (endPoint >= number) {
-            if (turnDown) {
-                for (int j = y + 1; j < n; j++) {
-                    matrix[j][x] = number;
-                    number++;
-                    if (endPoint < number) {
-                        turnDown = false;
-                        break;
-                    }
-                    if (j == n - 1 || matrix[j + 1][x] != 0) {
-                        turnDown = false;
-                        turnLeft = true;
-                        y = j;
-                        break;
-                    }
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < n; ++j) {
+                if (i % 3 == 0) {
+                    ++x;
+                } else if (i % 3 == 1) {
+                    ++y;
+                } else if (i % 3 == 2) {
+                    --x;
+                    --y;
                 }
-            }
-
-            if (turnLeft) {
-                for (int i = x + 1; i < n; i++) {
-                    matrix[y][i] = number;
-                    number++;
-                    if (endPoint < number) {
-                        turnLeft = false;
-                        break;
-                    }
-                    if (i == n - 1 || matrix[y][i + 1] != 0) {
-                        turnLeft = false;
-                        turnUp = true;
-                        x = i;
-                        break;
-                    }
-                }
-            }
-
-            if (turnUp) {
-                while (matrix[y - 1][x - 1] == 0) {
-                    x--;
-                    y--;
-                    matrix[y][x] = number;
-                    number++;
-                }
-                turnUp = false;
-                turnDown = true;
-                if (endPoint < number) {
-                    turnDown = false;
-                }
+                matrix[x][y] = number++;
             }
         }
-
 
         int[] answer = new int[endPoint];
         int count = 0;
