@@ -29,4 +29,29 @@ public class MonthlyCode1 {
 
         return Integer.parseInt(sb.toString(), 3);
     }
+
+    int[] binary(String s) {
+        int c;
+        int count = 0;
+        int zeroCount = 0;
+        StringBuilder sb = new StringBuilder();
+
+        while (!s.equals("1")) {
+            count++;
+            zeroCount += s.length();
+
+            s = s.replace("0", "");
+            c = s.length();
+            zeroCount -= c;
+
+            sb = new StringBuilder();
+            while (c > 0) {
+                sb.append(c % 2);
+                c /= 2;
+            }
+
+            s = sb.reverse().toString();
+        }
+        return new int[]{count, zeroCount};
+    }
 }

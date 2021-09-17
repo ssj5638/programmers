@@ -27,4 +27,9 @@ class MonthlyCodeTest1 {
         assertEquals(actual, 229);
     }
 
+    @Test
+    void binaryTest() {
+        int[] actual = mc1.binary("110010101001");
+        assertEquals(actual, new int[]{3, 8});
+    }
 }
