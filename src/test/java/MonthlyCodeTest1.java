@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MonthlyCodeTest1 {
@@ -30,6 +31,6 @@ class MonthlyCodeTest1 {
     @Test
     void binaryTest() {
         int[] actual = mc1.binary("110010101001");
-        assertEquals(actual, new int[]{3, 8});
+        assertArrayEquals(new int[]{3, 8}, actual);
     }
 }
